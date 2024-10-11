@@ -22,8 +22,8 @@ To download and use this project:
 3. Then import all projects from the [workspace](./workspace) folder.
 
 To use the model "plugin" and see the example instances, do the following:
-4. Right-click on [no.ntnu.tdt4250.besieged.game](./workspace/no.ntnu.tdt4250.besieged.game).
-5. Press "Run as" -> "Eclipse Application".
-6. From the new Eclipse window, import the [runtime-EclipseApplication/no.ntnu.game.examples](./runtime-EclipseApplication/no.ntnu.game.examples) project, which containts the example instances.
+1. In Eclipse, Right-click on [no.ntnu.tdt4250.besieged.game](./workspace/no.ntnu.tdt4250.besieged.game).
+2. Press "Run as" -> "Eclipse Application".
+3. From the new Eclipse window, import the [runtime-EclipseApplication/no.ntnu.game.examples](./runtime-EclipseApplication/no.ntnu.game.examples) project, which containts the example instances.
 
 NOTE: I would like to mention that I have had some trouble with Eclipse, but currently Eclipse, and this project, work prefectly fine on my machine.
