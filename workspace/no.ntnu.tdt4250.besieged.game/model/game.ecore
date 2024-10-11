@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="game" nsURI="http://www.ntnu.no/TDT4250/Besieged/game" nsPrefix="game">
+  <eClassifiers xsi:type="ecore:EClass" name="Game">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="villageHealthShouldNotBeLessThanZero moneyShouldNotBeLessThanZero gameIDHasToBeSixteenCharacters singleplayerShouldNotHaveMoreThanOnePlayer"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="players" lowerBound="1"
+        upperBound="-1" eType="#//Player" containment="true" eOpposite="#//Player/game"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gameID" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="map" lowerBound="1" eType="#//Map"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gameMode" lowerBound="1"
+        eType="#//GameMode" defaultValueLiteral="MULTIPLAYER"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="money" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="villageHealth" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numPlayers" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" changeable="false"
+        volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Player">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="playerNameHasToBetweenTenAndTwentyCharacters"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="game" lowerBound="1" eType="#//Game"
+        changeable="false" eOpposite="#//Game/players"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="playerName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Map">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="currentWaveNumberCannotBeHigherThanAmountOfEnemyWaves tilesNeedsToContainOneStartAndOneEndPathTiles mapNameShouldBeBetweenFiveAndTwentyCharacters"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tiles" lowerBound="4" upperBound="-1"
+        eType="#//Tile" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enemywaves" lowerBound="1"
+        upperBound="-1" eType="#//EnemyWave" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentWaveNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isWaveCompleted" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
+        volatile="true" transient="true" defaultValueLiteral="False" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allWavesCompleted" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
+        volatile="true" transient="true" defaultValueLiteral="False" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Enemy" eSuperTypes="#//GameEntity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="valueShouldBeMoreThanZero damageShouldBeMoreThanZero"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" unique="false"
+        lowerBound="1" eType="#//Position" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="damage" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="health" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TowerCard" eSuperTypes="#//GameEntity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="priceShouldBeMoreThanZero baseDamageShouldBeMoreThanZero"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="price" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseDamage" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tower" eSuperTypes="#//GameEntity">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="damageShouldBeMoreThanZero"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="towercards" lowerBound="2"
+        upperBound="2" eType="#//TowerCard" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="damage" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" changeable="false"
+        volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tile">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="areNeighbouringPositionsValid tileShouldBeGroundIfTowerOrCardIsPlaced"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="position" ordered="false"
+        lowerBound="1" eType="#//Position" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="neighbours" lowerBound="1"
+        upperBound="8" eType="#//Tile"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="towercard" eType="#//TowerCard"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tower" eType="#//Tower"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" ordered="false" unique="false"
+        lowerBound="1" eType="#//TileType" defaultValueLiteral="GROUND"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnemyWave">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enemies" lowerBound="1"
+        upperBound="-1" eType="#//Enemy" changeable="false" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="totalValue" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" changeable="false"
+        volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numRemainingEnemies" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TileType">
+    <eLiterals name="PATH" literal="PATH"/>
+    <eLiterals name="GROUND" value="1"/>
+    <eLiterals name="OBSTRUCTION" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GameMode">
+    <eLiterals name="SINGLEPLAYER"/>
+    <eLiterals name="MULTIPLAYER" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Position">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GameEntity" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="nameShouldBeBetweenTenAndFourtyCharacters"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StartPathTile" eSuperTypes="#//PathTile">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="shouldBeConnectedToOnlyOnePathTile"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EndPathTile" eSuperTypes="#//PathTile">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="shouldBeConnectedToOnlyOnePathTile"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PathTile" eSuperTypes="#//Tile">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="isPathTileType"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConnectingPathTile" eSuperTypes="#//PathTile">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="shouldOnlyBeConnectedToTwoPathTiles"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

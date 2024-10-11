@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/no.ntnu.tdt4250.besieged.game/src-gen" creationIcons="false"
+    editDirectory="/no.ntnu.tdt4250.besieged.game.edit/src-gen" editorDirectory="/no.ntnu.tdt4250.besieged.game.editor/src-gen"
+    modelPluginID="no.ntnu.tdt4250.besieged.game" modelName="Game" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="21.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>game.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="Game" basePackage="no.ntnu.tdt4250.besieged" disposableProviderFactory="true"
+      ecorePackage="game.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="game.ecore#//TileType">
+      <genEnumLiterals ecoreEnumLiteral="game.ecore#//TileType/PATH"/>
+      <genEnumLiterals ecoreEnumLiteral="game.ecore#//TileType/GROUND"/>
+      <genEnumLiterals ecoreEnumLiteral="game.ecore#//TileType/OBSTRUCTION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="game.ecore#//GameMode">
+      <genEnumLiterals ecoreEnumLiteral="game.ecore#//GameMode/SINGLEPLAYER"/>
+      <genEnumLiterals ecoreEnumLiteral="game.ecore#//GameMode/MULTIPLAYER"/>
+    </genEnums>
+    <genClasses ecoreClass="game.ecore#//Game">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Game/players"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Game/gameID"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Game/map"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Game/gameMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Game/money"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Game/villageHealth"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Game/numPlayers"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//Player">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Player/game"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Player/playerName"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//Map">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Map/tiles"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Map/enemywaves"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Map/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Map/currentWaveNumber"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Map/isWaveCompleted"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Map/allWavesCompleted"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//Enemy">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Enemy/value"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Enemy/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Enemy/damage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Enemy/health"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//TowerCard">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//TowerCard/price"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//TowerCard/baseDamage"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//Tower">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Tower/towercards"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Tower/damage"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//Tile">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Tile/position"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Tile/neighbours"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Tile/towercard"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//Tile/tower"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Tile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Tile/type"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//EnemyWave">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference game.ecore#//EnemyWave/enemies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//EnemyWave/totalValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//EnemyWave/numRemainingEnemies"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//Position">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Position/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Position/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//Position/y"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//GameEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute game.ecore#//GameEntity/name"/>
+    </genClasses>
+    <genClasses ecoreClass="game.ecore#//StartPathTile"/>
+    <genClasses ecoreClass="game.ecore#//EndPathTile"/>
+    <genClasses ecoreClass="game.ecore#//PathTile"/>
+    <genClasses ecoreClass="game.ecore#//ConnectingPathTile"/>
+  </genPackages>
+</genmodel:GenModel>

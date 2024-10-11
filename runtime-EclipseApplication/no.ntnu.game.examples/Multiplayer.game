@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game:Game xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:game="http://www.ntnu.no/TDT4250/Besieged/game" gameID="0987654321098765" villageHealth="1000">
+  <players playerName="FirstPlayer"/>
+  <players playerName="SecondPlayer"/>
+  <map name="MultiplayerMap">
+    <tiles xsi:type="game:StartPathTile" neighbours="//@map/@tiles.2 //@map/@tiles.3 //@map/@tiles.1" type="PATH">
+      <position/>
+    </tiles>
+    <tiles xsi:type="game:EndPathTile" neighbours="//@map/@tiles.0 //@map/@tiles.2 //@map/@tiles.3" type="PATH">
+      <position x="1"/>
+    </tiles>
+    <tiles neighbours="//@map/@tiles.0 //@map/@tiles.3 //@map/@tiles.1">
+      <position y="1"/>
+      <tower name="TowerTwoIsHere">
+        <towercards name="AnotherCardIsHere" price="5" baseDamage="10"/>
+        <towercards name="YetAnotherCardIsHere" price="25" baseDamage="50"/>
+      </tower>
+    </tiles>
+    <tiles neighbours="//@map/@tiles.0 //@map/@tiles.2 //@map/@tiles.1">
+      <position x="1" y="1"/>
+      <towercard name="CardOneIsHere" price="1" baseDamage="1"/>
+    </tiles>
+    <enemywaves>
+      <enemies name="FirstEnemy" value="100" damage="1000" health="100">
+        <position x="1"/>
+      </enemies>
+      <enemies name="SecondEnemy" value="2" damage="2" health="2">
+        <position/>
+      </enemies>
+    </enemywaves>
+    <enemywaves>
+      <enemies name="FirstBossOnSecondWaveNew" value="1000000" damage="1000" health="500">
+        <position/>
+      </enemies>
+      <enemies name="SomeOtherEnemy" value="3" damage="10" health="50">
+        <position x="1"/>
+      </enemies>
+    </enemywaves>
+  </map>
+</game:Game>

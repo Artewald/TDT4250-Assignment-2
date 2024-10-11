@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game:Game xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:game="http://www.ntnu.no/TDT4250/Besieged/game" gameID="1234567890123456" gameMode="SINGLEPLAYER" villageHealth="1000">
+  <players playerName="FirstPlayer"/>
+  <map name="SingleplayerMap">
+    <tiles xsi:type="game:StartPathTile" neighbours="//@map/@tiles.1 //@map/@tiles.5 //@map/@tiles.6" type="PATH">
+      <position/>
+    </tiles>
+    <tiles xsi:type="game:ConnectingPathTile" neighbours="//@map/@tiles.5 //@map/@tiles.6 //@map/@tiles.7 //@map/@tiles.0 //@map/@tiles.2" type="PATH">
+      <position x="1"/>
+    </tiles>
+    <tiles xsi:type="game:ConnectingPathTile" neighbours="//@map/@tiles.6 //@map/@tiles.7 //@map/@tiles.8 //@map/@tiles.1 //@map/@tiles.3" type="PATH">
+      <position x="2"/>
+    </tiles>
+    <tiles xsi:type="game:ConnectingPathTile" neighbours="//@map/@tiles.7 //@map/@tiles.8 //@map/@tiles.9 //@map/@tiles.2 //@map/@tiles.4" type="PATH">
+      <position x="3"/>
+    </tiles>
+    <tiles xsi:type="game:EndPathTile" neighbours="//@map/@tiles.3 //@map/@tiles.8 //@map/@tiles.9" type="PATH">
+      <position x="4"/>
+    </tiles>
+    <tiles neighbours="//@map/@tiles.0 //@map/@tiles.1 //@map/@tiles.6">
+      <position y="1"/>
+    </tiles>
+    <tiles neighbours="//@map/@tiles.0 //@map/@tiles.5 //@map/@tiles.1 //@map/@tiles.2 //@map/@tiles.7" >
+      <position x="1" y="1"/>
+      <towercard name="CardOneIsHere" price="1" baseDamage="1"/>
+    </tiles>
+    <tiles neighbours="//@map/@tiles.1 //@map/@tiles.2 //@map/@tiles.3 //@map/@tiles.6 //@map/@tiles.8" type="OBSTRUCTION">
+      <position x="2" y="1"/>
+    </tiles>
+    <tiles neighbours="//@map/@tiles.4 //@map/@tiles.3 //@map/@tiles.2 //@map/@tiles.9 //@map/@tiles.7">
+      <position x="3" y="1"/>
+      <tower name="TowerOneIsHere">
+        <towercards name="CardTwoIsHere" price="2" baseDamage="2"/>
+        <towercards name="CardThreeIsHere" price="3" baseDamage="3"/>
+      </tower>
+    </tiles>
+    <tiles neighbours="//@map/@tiles.8 //@map/@tiles.3 //@map/@tiles.4">
+      <position x="4" y="1"/>
+    </tiles>
+    <enemywaves>
+      <enemies name="FirstEnemy" value="1" damage="1" health="1">
+        <position/>
+      </enemies>
+      <enemies name="SecondEnemy" value="2" damage="2" health="2">
+        <position/>
+      </enemies>
+    </enemywaves>
+    <enemywaves>
+      <enemies name="FirstBossOnSecondWave" value="100000" damage="100" health="100">
+        <position/>
+      </enemies>
+    </enemywaves>
+  </map>
+</game:Game>
